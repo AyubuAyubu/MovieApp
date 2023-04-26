@@ -1,0 +1,9 @@
+package com.bazuma.movieapp.screens.home
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+
+@Composable
+fun DetailsScreen(navController: NavController){
+
+}
