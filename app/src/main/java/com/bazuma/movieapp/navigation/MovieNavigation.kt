@@ -1,10 +1,12 @@
 package com.bazuma.movieapp.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.bazuma.movieapp.screens.home.DetailsScreen
+import androidx.navigation.navArgument
+import com.bazuma.movieapp.screens.details.DetailsScreen
 import com.bazuma.movieapp.screens.home.HomeScreen
 
 @Composable
@@ -24,8 +26,11 @@ fun MovieNavigation(){
           HomeScreen(navController=navController)
         }
 
-        composable(MovieScreens.DetailsScreen.name){
-            DetailsScreen(navController=navController)
-        }
-    }
+        composable(MovieScreens.DetailsScreen.name+"/{movie}",
+                arguments = listOf(navArgument(name = "movie"){type=NavType.StringType}))
+            {
+                backStackEntry ->
+              DetailsScreen(navController=navController,backStackEntry.arguments?.getString("movie"))
+           }
+      }
 }

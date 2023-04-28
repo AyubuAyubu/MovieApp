@@ -38,14 +38,17 @@ fun MainContent(
     "Ghosted",
     "Shazam",
     "65",
+        "Fast Furious",
+        "Major Payne",
     "Ant Man",
-    "365"
+    "38"
+    
 )){
     Column(modifier = Modifier.padding(12.dp)) {
         LazyColumn {
             items(items=movieList){
                 MovieRow(movie = it){movie ->
-                    navController.navigate(route=MovieScreens.DetailsScreen.name)
+                    navController.navigate(route=MovieScreens.DetailsScreen.name+"/$movie" )
                 }
             }
         }
